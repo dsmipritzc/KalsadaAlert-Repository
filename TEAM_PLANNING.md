@@ -1,29 +1,83 @@
-# Team Planning Project for KalsadaAlert
+# KalsadaAlert-Project Team Planning
 
-## Overview
-This document provides a simple, high‑level outline to help your team set up and manage the KalsadaAlert project.
+This document provides a simple, step‑by‑step guide to create a **team planning project** (Kanban board) for the `KalsadaAlert-Repository` using the GitHub CLI.
 
-## Steps
-1. **Initialize the repository** – Clone the repo (already done) and create a new branch for planning work, e.g. `team-planning`.
-2. **Define objectives** – List the main goals of the alert system (e.g., real‑time road incident detection, notification delivery, dashboard visualization).
-3. **Assign roles** – Identify who will be responsible for:
-   - Backend development
-   - Front‑end UI
-   - Data ingestion & processing
-   - DevOps / deployment
-   - Testing & QA
-4. **Create a simple task board** – Use GitHub Projects, Trello, or any preferred tool. Populate columns:
-   - Backlog
-   - To Do
-   - In Progress
-   - Review
-   - Done
-5. **Set up basic CI** – Add a GitHub Actions workflow that runs linting and tests on each push (optional for now).
-6. **Documentation** – Draft a brief `README` with installation steps and contribution guidelines.
-7. **Regular sync** – Schedule a weekly 30‑minute meeting to review progress and adjust priorities.
+---
 
-## Deliverables
-- A `team-planning` branch with this `TEAM_PLANNING.md` file.
-- Optional: a `README.md` template (can be added later).
+## Prerequisites
 
-Feel free to expand each section with more details specific to your project. This file is intentionally concise so the team can follow it directly.
+1. **GitHub CLI (`gh`) installed** – you can verify with:
+   ```
+   gh --version
+   ```
+2. You are **authenticated** to GitHub:
+   ```
+   gh auth login
+   ```
+   Choose the appropriate account/organization (the repository belongs to `dsmipritzc`).
+3. The repository is **cloned locally** (already done in `C:\Users\Gem\.gemini\antigravity\scratch\KalsadaAlert-Project`).
+
+---
+
+## Create the Kanban Project
+
+Run the following command **inside the repository directory**:
+
+```bash
+cd C:\Users\Gem\.gemini\antigravity\scratch\KalsadaAlert-Project
+
+gh project create \
+  --repo dsmipritzc/KalsadaAlert-Repository \
+  --title KalsadaAlert-Project \
+  --template basic
+```
+
+- `--template basic` creates a simple **To‑Do / In‑Progress / Done** board (Kanban).
+- The command will output the URL of the newly created project.
+
+---
+
+## Add Initial Columns (Optional)
+
+If you prefer custom column names, you can edit the project in the GitHub UI or use:
+
+```bash
+gh project edit <PROJECT_NUMBER> --add-column "Backlog"
+```
+
+Replace `<PROJECT_NUMBER>` with the number shown after creation.
+
+---
+
+## Add Tasks (Issues) to the Project
+
+For each task you want on the board, create an issue (if it does not already exist) and add it to the project:
+
+```bash
+# Example: create an issue
+gh issue create \
+  --title "Define alert criteria" \
+  --body "Describe the criteria for road alerts."
+
+# Add the issue to the project (replace ISSUE_NUMBER and PROJECT_NUMBER)
+gh project add <PROJECT_NUMBER> --issue <ISSUE_NUMBER>
+```
+
+Repeat for all tasks listed in the original context document.
+
+---
+
+## Verify the Project
+
+Open the project URL in a browser to see the board and ensure all columns and tasks appear as expected.
+
+---
+
+## Summary
+
+- Clone repo (already done).
+- Authenticate `gh`.
+- Run the `gh project create` command above.
+- Optionally modify columns and add issues.
+
+You can now use the Kanban board to plan and track work for **KalsadaAlert-Project**.
